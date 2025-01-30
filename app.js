@@ -37,6 +37,22 @@ async function run() {
 }
 run().catch(console.dir);
 
+async function getData(){
+
+  let collection = await client.db("cluster1").collection("cluster1");
+
+  let results = await collection.find({}).toArray();
+    //.limt(58)
+    //.toArray();
+
+  console.log(results);
+  return results
+ 
+  
+
+}
+
+
 
 
 
@@ -44,6 +60,13 @@ run().catch(console.dir);
 
 
 // change my code
+
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData();
+  console.log(getDataResults);
+  res.sendFile(getDataResults);
+  
+  })
 
 app.get('/', function (req, res) {
 res.sendFile('index.html');
