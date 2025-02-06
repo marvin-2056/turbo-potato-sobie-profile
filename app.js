@@ -53,7 +53,14 @@ async function getData(){
 }
 
 
-
+app.get('/read', async function (req, res) {
+  let getDataResults = await getData();
+  console.log(getDataResults);
+  res.sendFile(getDataResults);
+  res.render('songs', 
+    { clusterData : getDataResults} ); 
+  
+  })
 
 
 
@@ -61,12 +68,7 @@ async function getData(){
 
 // change my code
 
-app.get('/read', async function (req, res) {
-  let getDataResults = await getData();
-  console.log(getDataResults);
-  res.sendFile(getDataResults);
-  
-  })
+
 
 app.get('/', function (req, res) {
 res.sendFile('index.html');
