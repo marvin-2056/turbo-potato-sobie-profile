@@ -1,16 +1,19 @@
-
-require('dotenv').config()
 const express = require('express')
+require('dotenv').config()
+const shajs = require('sha.js')
 const app = express()
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser')
+const { ObjectId } = require('mongodb')
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGO_URI; 
+const uri = process.env.MONGO_URI;
 
+// console.log(uri); 
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'))
+
 
 
 
@@ -22,6 +25,8 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
+console.log(shajs('sha256').update('cat').digest('hex'));
 
 async function run() {
   try {
@@ -35,88 +40,147 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+// run().catch(console.dir);
 
-async function getData(){
+async function getData() {
 
-  let collection = await client.db("cluster1").collection("cluster1");
+  await client.connect();
+  let collection = await client.db("Database-one").collection("database-one");
 
   let results = await collection.find({}).toArray();
-    //.limt(58)
-    //.toArray();
 
   console.log(results);
-  return results
- 
-  
+  return results;
 
 }
-
 
 app.get('/read', async function (req, res) {
   let getDataResults = await getData();
   console.log(getDataResults);
-  res.sendFile(getDataResults);
-  res.render('songs', 
-    { clusterData : getDataResults} ); 
-  
+  res.render('songs',
+    { songData: getDataResults });
+
+})
+
+app.post('/insert', async (req, res) => {
+  // app.get('/insert', async (req,res)=> {
+
+  console.log('in /insert');
+
+  let newSong = req.body.myName; //only for POST, GET is req.params? 
+  // let newSong = req.query.myName;
+  console.log(newSong);
+
+  //connect to db,
+  await client.connect();
+  //point to the collection 
+  await client
+    .db("Database-one")
+    .collection("database-one")
+    .insertOne({ whatthewhatever: newSong });
+
+  res.redirect('/read');
+
+});
+
+app.post('/update', async (req, res) => {
+
+  console.log("req.body: ", req.body)
+
+  client.connect;
+  const collection = client.db("Database-one")
+    .collection("database-one");
+  let result = await collection.findOneAndUpdate(
+    { "_id": new ObjectId(req.body.nameID) }, { $set: { "fname": req.body.inputUpdateName } }
+  )
+    .then(result => {
+      console.log(result);
+      res.redirect('/read');
+    })
+});
+
+app.post('/delete/:id', async (req, res) => {
+
+  console.log("in delete, req.parms.id: ", req.params.id)
+
+  client.connect;
+  const collection = client.db("Database-one")
+    .collection("database-one");
+  let result = await collection.findOneAndDelete(
+    {
+      "_id": new ObjectId(req.params.id)
+    }
+  ).then(result => {
+    console.log(result);
+    res.redirect('/read');
   })
 
 
 
+})
 
 
-// change my code
 
 
+//begin all my middlewares
 
 app.get('/', function (req, res) {
-res.sendFile('index.html');
+  res.sendFile('index.html');
 
 })
 
-app.post('/saveMyName', (req,res)=>{
-console.log('did we hit the post endpoint?');
+app.post('/saveMyName', (req, res) => {
+  console.log('did we hit the post endpoint?');
+  console.log(req.body);
+  // res.redirect('/ejs'); 
+  res.render('words',
+    { pageTitle: req.body.myName });
 
-console.log(req.body);
+  // res.render('words',
+  // {theData : req.body});
 
-// res.redirect('/ejs');
-
-res.render('words',
-{pageTitle: req.body.myName});
-
-// res.render('words',
-// {theData: req.body})
-})
-
-app.get('/saveMyNameGet', (req,res)=>{
-console.log('did we hit the get endpoint?');
-
-console.log(req.query);
-
-res.redirect('/ejs');
 
 })
+
+app.get('/saveMyNameGet', (req, res) => {
+  console.log('did we hit the get endpoint?');
+
+  console.log('req.query: ', req.query);
+
+  // console.log('req.params: ', req.params);
+
+  let reqName = req.query.myNameGet;
+  // res.redirect('/ejs'); 
+
+  res.render('words',
+    { pageTitle: reqName });
+
+})
+
 
 app.get('/ejs', function (req, res) {
-res.render('words',
-{pageTitle: 'my cool ejs page'}
-);
+  res.render('words',
+    { pageTitle: 'my cool ejs page' }
+  );
 })
 
+
 app.get('/nodemon', function (req, res) {
-res.send('look ma, no kill node process then restart node then refresh browser...cool?');
+  res.send('look ma, no kill node process then restart node then refresh browser...cool?');
 
 })
 
 //endpoint, middleware(s)
 app.get('/helloRender', function (req, res) {
-res.send('Hello Express from Real World<br><a href="/">back to home</a>')
+  res.send('Hello Express from Real World<br><a href="/">back to home</a>')
 })
 
+
+
+
 app.listen(
-port,
-()=> console.log(
-`server is running on ... ${port}`
-)
+  port,
+  () => console.log(
+    `server is running on ... localhost:${port}`
+  )
 );

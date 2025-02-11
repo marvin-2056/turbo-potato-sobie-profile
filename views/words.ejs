@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title><%=pageTitle%></title>
+    <title>
+        <%=pageTitle%>
+    </title>
 </head>
 
 <body>
 
-<h1>I'm in EJS Render</h1>
+    <h1>I'm in EJS Render</h1>
 
-<p><%=pageTitle%></p>
+    <p>
+        <%=pageTitle%>
+    </p>
 
-<h2>Here's a Post Method</h2>
-<form method="POST" action="/saveMyName">
-<input name="myName">
-<input type="submit" value="save my name!">
-</form>
+    <h2>Here's a Post Method</h2>
+    <form method="POST" action="/saveMyName">
+        <input name="myName">
+        <input type="submit" value="save my name!">
+    </form>
 
-<h2>Here's a GET Method</h2>
+    <h2>Here's a GET Method</h2>
 
-<form method="GET" action="/saveMyNameGet">
-<input name="myName">
-<input type="submit" value="save my name!">
-</form>
+    <form method="GET" action="/saveMyNameGet">
+        <input name="myName">
+        <input type="submit" value="save my name!">
+    </form>
 </body>
+
 </html>
