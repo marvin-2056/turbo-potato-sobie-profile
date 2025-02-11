@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="sty/styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 
@@ -36,24 +36,47 @@
     </div>
   </nav>
 
-<div class="container mt-5">
-    
-    <h1>NATO Phonetic Converter</h1>
-    <p>Enter text to convert into NATO phonetic alphabet.</p>
-    <form id="phoneticForm">
-        <div class="mb-3">
-            <label for="inputText" class="form-label">Enjoy!</label>
-            <input type="text" class="form-control" id="inputText" placeholder="Enter text">
-        </div>
-        <button type="button" class="btn btn-primary" onclick="convertToPhonetic()">Convert</button>
-        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-    </form>
 
-    <!--the generated result will display here-->
-    <div class="mt-3" id="outputArea">
+
+
+<main>
+
+    <form method="POST" action="insert/">
+        <input name="title">
+        <input name="post">
+        <button class="btn btn-primary" role="submit">new post</button>
+      </form>
+
+      
+    <% profileData.forEach(result=> { %>
+        <div class="col-md-8">
         
+  
+      <form method="POST" action="update/">
+        <input name="updateTitle" value="<%= result.title %>">
+        <input name="updatePost" value="<%= result.post %>"> 
+        <input type="hidden" name="updateId" value="<%=result._id %>">
+        <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
+      </form>
+      
+  
+  
+      <form method="POST" action="delete/">
+        <input type="hidden" name="deleteId" value="<%=result._id %>">
+        <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
+      </form>
+  
+  
     </div>
-</div>
+      <% }); %>
+
+</main>
+
+<br><br><br><br>
+
+<br><br><br><br>
+<br><br><br><br>
+
 
 <!-- Footer -->
 <footer class="bg-light text-center text-lg-start mt-5">
@@ -74,3 +97,4 @@
 
 
 </html>
+
