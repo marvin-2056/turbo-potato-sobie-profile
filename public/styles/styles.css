@@ -1,29 +1,131 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-
-.container {
-  padding-top: 20px;
-  padding-bottom: 20px;
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #2c3e50;
+  color: #f5f5dc;
 }
 
-footer {
-  background-color: #3e3c3c;
-  padding: 10px 0;
-  margin-top: 311px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 20px;
+  color: #f5f5dc;
 }
 
-footer a {
+p {
+  margin-bottom: 10px;
+  color: #f5f5dc;
+}
+
+a {
+  color: #f5f5dc;
   text-decoration: none;
-  color: #007bff;
 }
 
-footer a:hover {
+a:hover {
+  color: #d1c8a5;
   text-decoration: underline;
 }
 
-body {
-  background-color: bisque;
 
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-brand {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.navbar {
+  margin-bottom: 30px;
+  background-color: #34495e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #f5f5dc !important;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: #f5f5dc !important;
+}
+
+header {
+  padding: 100px 0;
+  background: #2c3e50;
+  color: #f5f5dc;
+  position: relative;
+}
+
+header h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 20px;
+}
+
+.headshot {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+section {
+  padding: 60px 0;
+  background-color: #34495e;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.bg-light {
+  background-color: #34495e !important;
+}
+
+.card {
+  background-color: #e6dec7;
+  color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  font-weight: bold;
+  color: #f5f5dc;
+}
+
+form .form-control {
+  border-radius: 0;
+  background-color: #f5f5dc;
+  color: #2c3e50;
+}
+
+.btn-primary {
+  background-color: #d1c8a5;
+  border: none;
+  color: #2c3e50;
+}
+
+.btn-primary:hover {
+  background-color: #b8a67d;
+}
+
+footer {
+  padding: 20px 0;
+  background-color: #2c3e50;
+  color: #f5f5dc;
+  text-align: center;
 }

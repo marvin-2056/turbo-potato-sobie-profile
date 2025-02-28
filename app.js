@@ -82,5 +82,5 @@ app.post('/update', async (req,res)=>{
 })
 }); 
 
-<html>Hello!!!</html>
+
 app.listen(port, ()=> console.log(`server is running on ... localhost:${port}`) );

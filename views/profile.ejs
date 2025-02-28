@@ -1,100 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Phonetic Generator</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <title>Sobie Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
-
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Phonetic Generator, By Marvin De La Cruz</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="https://marvin-2056.github.io/JULIETT-2.0-Final-Project/">Home</a></li>
-          <li><a href="https://github.com/marvin-2056/JULIETT-2.0-Final-Project"> Github REPO</a></li>
-          <li><a href="https://validator.w3.org/nu/">Nu LInk Checker</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand">Welcome</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="https://validator.w3.org/nu/">Nu Checker</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://github.com/marvin-2056/turbo-potato-sobie-profile">Github</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- Hero Section w/Headshot -->
+  <header class="bg-dark text-white text-center py-5 ">
+    <div class="container">
+      <img src="/imgs/5871.jpg" alt="Your Headshot" class="headshot mb-4">
+      <h1>Marvin De La Cruz</h1>
+      <p class="lead">Senior Information Technology Major</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I am a college senior majoring in Information Technology with a concentration in Cybersecurity. I have hands-on
+        experience in entry-level IT and Customer Service. I also have experience using data investigation and forensic
+        applications such as Autopsy, FTK Imager, and Wireshark. I aspire to be a Digital Forensic Investigator one day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-5 bg-light">
+    <div class="container">
+      <h2>Experience</h2>
+      <ul>
+        <li>IT Help Desk Assistant - UNA IT Department</li>
+        <li>Business Service Sales Representative - Cricket Wireless</li>
+        <li>Computer Repair and Data Recovery</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Technical Skills</h4>
+          <ul>
+            <li>Autopsy, Wireshark, FTK Imager</li>
+            <li>Linux (Debian, Ubuntu), OpenSSH, NMAP, UFW</li>
+            <li>ESP32 Board, MicroPython, Thonny IDE, VScode, Git Bash</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h4>Soft Skills</h4>
+          <ul>
+            <li>Project Planning</li>
+            <li>Team Collaboration</li>
+            <li>Problem Solving</li>
+            <li>Translating</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-light">
+    <div class="container">
+      <h2>Projects:</h2>
+      <p>ESP32 FakeAP (Evil Twin Attack)</p>
+      <p>Web Development</p>
+    </div>
+  </section>
+
+  <!-- Hobbies Section -->
+  <section id="hobbies" class="py-5 bg-light">
+    <div class="container">
+      <h2>Hobbies:</h2>
+      <p>Cooking</p>
+      <p>Baking</p>
+      <p>Music Composition</p>
+      <p>Musician: Drummer, Trombonist (YouTube channel coming soon)</p>
+      <p>Working out</p>
+    </div>
+  </section>
+
+  <!-- Suggestions List and CRUD Operations -->
+  <section id="suggestions" class="py-5">
+    <div class="container">
+      <h2>Suggestions</h2>
+      <p> I have left a place where you can suggest things I should cook or bake. Just enter cook or bake in the first
+        box followed by the dish you want me to make. For Music suggestions enter the name of the song in the first box
+        followed by the artist. If you are unhappy with your suggestion, edit it or click the delete button. </p>
 
 
-
-<main>
-
-    <form method="POST" action="insert/">
+      <form method="POST" action="insert/">
         <input name="title">
         <input name="post">
-        <button class="btn btn-primary" role="submit">new post</button>
+        <button class="btn btn-primary" role="submit">Add</button>
       </form>
 
-      
-    <% profileData.forEach(result=> { %>
+      <br>
+
+
+      <% profileData.forEach(result=> { %>
         <div class="col-md-8">
-        
-  
-      <form method="POST" action="update/">
-        <input name="updateTitle" value="<%= result.title %>">
-        <input name="updatePost" value="<%= result.post %>"> 
-        <input type="hidden" name="updateId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-pencil"></i></button>
-      </form>
-      
-  
-  
-      <form method="POST" action="delete/">
-        <input type="hidden" name="deleteId" value="<%=result._id %>">
-        <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i></button>
-      </form>
-  
-  
-    </div>
-      <% }); %>
-
-</main>
-
-<br><br><br><br>
-
-<br><br><br><br>
-<br><br><br><br>
 
 
-<!-- Footer -->
-<footer class="bg-light text-center text-lg-start mt-5">
-    <div class="container p-4">
-        <div class="text-center">
-            <a href="https://www.nato.int/" target="_blank">NATO Official Site</a> |
-            <a href="https://github.com/marvin-2056" target="_blank">Github Profile</a>
-        
+          <form method="POST" action="update/">
+            <input name="updateTitle" value="<%= result.title %>">
+            <input name="updatePost" value="<%= result.post %>">
+            <input type="hidden" name="updateId" value="<%=result._id %>">
+            <button class="btn btn-primary" role="submit"><i class="bi bi-pencil">Submit</i></button>
+          </form>
+
+
+
+          <form method="POST" action="delete/">
+            <input type="hidden" name="deleteId" value="<%=result._id %>">
+            <button class="btn btn-primary" role="submit"><i class="bi bi-trash3"></i>Delete</button>
+          </form>
+
+
         </div>
-    </div>
-</footer>
+        <% }); %>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="scr/scripts.js"></script>
+    </div>
+  </section>
+
+  
+  <footer class="bg-light text-white text-center py-3 mt-5">
+    <div class="container">
+      <p>Created by Marvin De La Cruz</p>
+      <p>
+        <a href="https://www.linkedin.com/in/marvin-de-la-cruz-serrano-9100812a0/" class="text-white" target="_blank">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+      </p>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/scripts/scripts.js"></script>
 </body>
 
-
-
 </html>
-
